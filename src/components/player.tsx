@@ -8,8 +8,13 @@ export default function Player() {
     <AudioPlayer
       autoPlay
       src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-      showFilledProgress={false}
+      showJumpControls={false}
       showDownloadProgress={false}
+      showFilledProgress={false}
+      layout='stacked-reverse'
+      onPlayError={() => {
+        alert('Error al recibir audio');
+      }}
     />
   </div>;
 
