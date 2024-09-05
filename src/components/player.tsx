@@ -7,7 +7,7 @@ export default function Player() {
   return <div className='fixed bottom-0 right-0 w-full md:w-80'>
     <AudioPlayer
       autoPlay
-      src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+      src={process.env.NEXT_PUBLIC_AUDIO_SRC}
       showJumpControls={false}
       showDownloadProgress={false}
       showFilledProgress={false}
@@ -17,5 +17,4 @@ export default function Player() {
       }}
     />
   </div>;
-
 }
