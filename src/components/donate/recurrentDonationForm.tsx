@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import PatreonButton from './patreonButton';
+import PaypalButton from './paypalButton';
 
 const amounts = [
   {
@@ -35,5 +36,6 @@ export default function RecurrentDonationForm() {
     </div>
     <hr className='my-4'/>
     <PatreonButton amount={amount}/>
+    <PaypalButton amount={amount}/>
   </div>;
 }
