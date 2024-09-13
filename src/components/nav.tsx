@@ -68,7 +68,7 @@ export default function Nav() {
             <CiCircleRemove className='h-6 w-6 text-blue-400'/>
           </button>
         </div>
-        <ul className='flex flex-col items-center'>
+        <ul className='flex flex-col items-center gap-4'>
           <li>
             <Link href='/' className='text-blue-400 text-xl text-center'>Inicio</Link>
           </li>

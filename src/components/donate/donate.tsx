@@ -8,7 +8,7 @@ export default function Donate() {
         <p className='text-slate-500 md:text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quia impedit dolore nemo. Perspiciatis dolorum at sit, necessitatibus maiores obcaecati iure perferendis tempore eaque neque, assumenda sint non cum pariatur!</p>
       </div>
     </div>
-    <div className='w-full relative flex justify-center items-center sm:w-2/3 md:w-1/2'>
+    <div className='w-full py-12 relative flex justify-center items-center sm:w-2/3 md:w-1/2'>
       <Form/>
     </div>
   </div>;
