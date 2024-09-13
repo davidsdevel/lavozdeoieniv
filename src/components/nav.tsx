@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import {usePathname} from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import {CiFacebook, CiInstagram, CiMenuBurger, CiTwitter, CiCircleRemove} from 'react-icons/ci';
 
@@ -9,6 +10,11 @@ export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
 
   const prevScrollY = useRef(0);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
