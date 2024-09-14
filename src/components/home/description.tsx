@@ -6,8 +6,8 @@ export default function Description() {
     </div>
     <div className='relative md:w-1/2 flex md:py-4 md:pr-[5%]'>
       <div className='py-12 flex text-center flex-col justify-center p-2 rounded-lg md:w-full md:p-4'>
-        <h3 className="text-4xl text-blue-800 mb-8 md:text-6xl">Titulo de la descripcion</h3>
-        <p className='text-slate-500 md:text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quia impedit dolore nemo. Perspiciatis dolorum at sit, necessitatibus maiores obcaecati iure perferendis tempore eaque neque, assumenda sint non cum pariatur!</p>
+        <h3 className="text-4xl text-blue-800 mb-8 md:text-6xl">Saltamos fronteras</h3>
+        <p className='text-slate-600 md:text-lg'>Nuestra misión es llevar un mensaje con valores Cristianos e impactar vidas con el mensaje de salvación, para ello hacemos uso de distintos medios de comunicación como la radio y los medios digitales. Y con ello poder llegar a mas personas en distintos lugares del planeta</p>
       </div>
     </div>
   </div>;

@@ -4,8 +4,8 @@ export default function Donation() {
   return <div className='bg-gray-100 px-4 flex sm:p-12 flex-col items-center md:flex-row md:px-24 md:py-32'>
     <div className='relative md:w-1/2 flex md:py-4 md:pr-[5%]'>
       <div className='py-12 flex text-center flex-col justify-center p-2 rounded-lg md:w-full md:p-4'>
-        <h3 className="text-4xl text-blue-800 mb-8 md:text-6xl">Titulo de la descripcion</h3>
-        <p className='text-slate-500 md:text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis quia impedit dolore nemo. Perspiciatis dolorum at sit, necessitatibus maiores obcaecati iure perferendis tempore eaque neque, assumenda sint non cum pariatur!</p>
+        <h3 className="text-4xl text-blue-800 mb-8 md:text-6xl">Ayudanos a llegar a mas personas</h3>
+        <p className='text-slate-600 md:text-lg'>Forma parte de nuestra mision, hay distintas maneras en que puedes apoyarnos. Tu suscripcion ayudará al crecimiento y cumplimiento de la mision de llevar mensajes con valores Cristianos. Descubre las distintas maneras de apoyarnos.</p>
         <Link href='/donar' className='text-center px-4 py-2 rounded-full block bg-blue-800 text-white w-full mt-8 md:mt-16'>Apoyar</Link>
       </div>
     </div>

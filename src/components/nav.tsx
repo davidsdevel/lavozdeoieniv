@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import {CiFacebook, CiInstagram, CiMenuBurger, CiTwitter, CiCircleRemove} from 'react-icons/ci';
+import {BiLogoWhatsapp} from 'react-icons/bi';
 
 export default function Nav() {
   const [isTop, setIsTop] = useState(true);
@@ -82,9 +83,18 @@ export default function Nav() {
             <Link href='/donar' className='text-blue-400 text-xl text-center'>Donaci&oacute;n</Link>
           </li>
           <li className='flex py-4 justify-center gap-2'>
-            <CiFacebook className='text-slate-600 h-8 w-8'/>
-            <CiInstagram className='text-slate-600 h-8 w-8'/>
-            <CiTwitter className='text-slate-600 h-8 w-8'/>
+            <a href='/' target='_blank'>
+              <CiFacebook className='text-slate-600 h-8 w-8'/>
+            </a>
+            <a href='/' target='_blank'>
+              <CiInstagram className='text-slate-600 h-8 w-8'/>
+            </a>
+            <a href='/' target='_blank'>
+              <CiTwitter className='text-slate-600 h-8 w-8'/>
+            </a>
+            <a href='/ws' target='_blank'>
+              <BiLogoWhatsapp className='text-slate-600 h-8 w-8'/>
+            </a>
           </li>
         </ul>
       </div>
