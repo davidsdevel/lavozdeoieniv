@@ -2,35 +2,64 @@ import { PropsWithChildren } from 'react';
 import {CgSpinner} from 'react-icons/cg';
 import { PayPalButtons, PayPalButtonsComponentProps, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 
-interface PatreonButtonProps extends PropsWithChildren {
-  amount: number | string
+export interface PaypalAccountInfo {
+  email_address: string;
+  payer_id: string;
+  name: Record<string, any>
+  phone?: Record<string, any>
+  birth_date?: string | undefined;
+  tax_info?: Record<string, any>
+  address?: Record<string, any>
 }
 
-export default function PatreonButton({amount}: PatreonButtonProps) {
+interface PatreonButtonProps extends PropsWithChildren {
+  amount: number | string
+  onDonation(account: PaypalAccountInfo): void //eslint-disable-line
+}
+
+export default function PatreonButton({amount, onDonation}: PatreonButtonProps) {
   const numberAmount = parseInt(amount as string);
 
-  const [scriptReducer] = usePayPalScriptReducer()
+  const paypalAmount = (numberAmount / 100).toFixed(2);
 
-  const styles: PayPalButtonsComponentProps["style"] = {
-    shape: "pill",
-    layout: "vertical",
-    label: 'subscribe',
+  const [scriptReducer] = usePayPalScriptReducer();
+
+  const styles: PayPalButtonsComponentProps['style'] = {
+    shape: 'pill',
+    layout: 'vertical',
     color: 'white'
   };
 
   const messages: PayPalButtonsComponentProps['message']  = {
     amount: numberAmount
-  }
+  };
 
-  const createSubscription: PayPalButtonsComponentProps["createSubscription"] = (data, actions) => {
-    return actions.subscription.create({
-      plan_id: 'P-04Y0725884211411XM3QHZRQ'
+  const createOrder: PayPalButtonsComponentProps['createOrder'] = function createOrder(data, actions) {
+    return actions.order.create({
+      intent: 'CAPTURE',
+      purchase_units: [
+        {
+          amount: {
+            value: paypalAmount,
+            currency_code: 'USD'
+          }
+        }
+      ]
     });
-  }
+  };
 
-  const onApprove: PayPalButtonsComponentProps["onApprove"] = async (data) => {
-    alert(`You have successfully subscribed to ${data.subscriptionID}`); // Optional message given to subscriber
-  }
+  const onApproveOrder: PayPalButtonsComponentProps['onApprove'] = async function onApproveOrder(data,actions) {
+    const order = actions.order;
+
+    if (!order)
+      return;
+
+    return order.capture().then(details => {
+      const account = details.payer;
+
+      onDonation(account as PaypalAccountInfo);
+    });
+  };
 
   return <div className='mt-4'>
     {
@@ -38,16 +67,11 @@ export default function PatreonButton({amount}: PatreonButtonProps) {
       <CgSpinner className='m-auto w-8 h-8 text-slate-800 animate-spin'/>
     }
     <PayPalButtons
+      forceReRender={[amount]}
       style={styles}
       message={messages}
-      createSubscription={createSubscription}
-      onApprove={onApprove}
+      createOrder={(data, actions) => createOrder(data,actions)}
+      onApprove={(data,actions) => onApproveOrder(data,actions)}
     />
-  </div>
+  </div>;
 }
-
-/*
-5$ P-9PL66233CP010340MM3QG3HQ
-10$ P-9VJ74176AF034443HM3QG5QA
-        
-*/

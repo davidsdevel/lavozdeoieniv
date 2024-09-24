@@ -3,7 +3,7 @@ export default function Footer() {
     <div></div>
     <hr className='border-wwhite'/>
     <div className='py-8'>
-      <p className='text-sm text-center'>Sitio mantenido por David&apos;s Devel | Todos los derechos reservados La Voz de OIENIV</p>
+      <p className='text-sm text-center'>Sitio mantenido por <a className='underline' href='https://www.davidsdevel.site?utm_source=lavozdeoieniv&utm_medium=url' target='_blank'>David&apos;s Devel</a> | Todos los derechos reservados La Voz de OIENIV</p>
     </div>
   </footer>;
 }

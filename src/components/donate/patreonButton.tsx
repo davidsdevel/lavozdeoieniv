@@ -17,7 +17,7 @@ export default function PatreonButton({amount}: PatreonButtonProps) {
 
   return <a href={href} target='_blank' className='transition-all duration-150 ease bg-white border border-black hover:bg-black hover:text-white rounded-full p-3 w-full flex items-center justify-center gap-2'>
     <FaPatreon className='w-6 h-6'/>
-    <span>Donar {numberAmount / 100}$</span>
+    <span>Suscribirse {numberAmount / 100}$</span>
   </a>;
 
 }
