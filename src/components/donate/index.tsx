@@ -6,11 +6,13 @@ import CTA from './cta';
 import Support from './support';
 import { PayPalScriptProvider, ReactPayPalScriptOptions } from '@paypal/react-paypal-js';
 
+const isProd = !!process.env.VERCEL
+
 export default function DonationPage() {
   const initialOptions: ReactPayPalScriptOptions = {
     clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID as string,
     vault: true,
-    environment: 'sandbox',
+    environment: isProd ? 'production' : 'sandbox',
     currency: 'USD'
   };
 
