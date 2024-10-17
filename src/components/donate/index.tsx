@@ -6,7 +6,7 @@ import CTA from './cta';
 import Support from './support';
 import { PayPalScriptProvider, ReactPayPalScriptOptions } from '@paypal/react-paypal-js';
 
-const isProd = !!process.env.VERCEL
+const isProd = process.env.NODE_ENV === 'production'
 
 export default function DonationPage() {
   const initialOptions: ReactPayPalScriptOptions = {
