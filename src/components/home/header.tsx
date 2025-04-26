@@ -11,15 +11,17 @@ export default function Header() {
         <Link href='/donar' className='text-center px-4 py-2 rounded-full block bg-blue-800 text-white w-full'>Apoyar</Link>
       </div>
       <div className='flex py-4 justify-center gap-2 md:flex-col md:absolute md:top-28 md:right-12'>
-        <a href='/' target='_blank'>
+        <a href='https://www.facebook.com/lavozdeoieniv' target='_blank'>
           <CiFacebook className='text-slate-600 h-8 w-8'/>
         </a>
-        <a href='/' target='_blank'>
+        <a href='https://www.instagram.com/lavozdeoieniv_oficial' target='_blank'>
           <CiInstagram className='text-slate-600 h-8 w-8'/>
         </a>
+        {/*
         <a href='/' target='_blank'>
           <CiTwitter className='text-slate-600 h-8 w-8'/>
         </a>
+        */}
         <a href='/ws' target='_blank'>
           <BiLogoWhatsapp className='text-slate-600 h-8 w-8'/>
         </a>
