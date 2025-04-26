@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CiFacebook, CiInstagram, CiTwitter } from 'react-icons/ci';
+import { CiFacebook, CiInstagram } from 'react-icons/ci';
 import { BiLogoWhatsapp } from 'react-icons/bi';
 
 export default function Header() {
