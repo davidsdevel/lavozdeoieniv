@@ -6,16 +6,37 @@ import { useEffect, useRef, useState } from 'react';
 import {CiFacebook, CiInstagram, CiMenuBurger, CiTwitter, CiCircleRemove} from 'react-icons/ci';
 import {BiLogoWhatsapp} from 'react-icons/bi';
 
+function Links() {
+  return <div className='hidden md:block'>
+    <ul className='w-full flex items-center justify-end'>
+      <li className='p-4'>
+        <Link className='transition-all ease duration-150 py-3 px-6 block rounded-lg text-blue-400 font-bold text-lg hover:bg-blue-300 hover:text-white' href="/">Inicio</Link>
+      </li>
+      <li className='p-4'>
+        <Link className='transition-all ease duration-150 py-3 px-6 block rounded-lg text-blue-400 font-bold text-lg hover:bg-blue-300 hover:text-white' href="/donar">Donaci&oacute;n</Link>
+      </li>
+    </ul>
+  </div>;
+}
+
+function MenuButton({ onMenuOpen }: { onMenuOpen: () => void }) {
+  return <div className='block md:hidden'>
+    <ul className='w-full flex items-center justify-end'>
+      <li className='p-4'>
+        <button className='p-2 block rounded-lg text-blue-400' onClick={onMenuOpen}>
+          <CiMenuBurger/>
+        </button>
+      </li>
+    </ul>
+  </div>;
+}
+
 export default function Nav() {
   const [isTop, setIsTop] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
   const prevScrollY = useRef(0);
   const pathname = usePathname();
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,37 +59,16 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isTop]);
 
-  const Links = () => <div className='hidden md:block'>
-    <ul className='w-full flex items-center justify-end'>
-      <li className='p-4'>
-        <Link className='transition-all ease duration-150 py-3 px-6 block rounded-lg text-blue-400 font-bold text-lg hover:bg-blue-300 hover:text-white' href="/">Inicio</Link>
-      </li>
-      <li className='p-4'>
-        <Link className='transition-all ease duration-150 py-3 px-6 block rounded-lg text-blue-400 font-bold text-lg hover:bg-blue-300 hover:text-white' href="/donar">Donaci&oacute;n</Link>
-      </li>
-    </ul>
-  </div>;
-  
-  const MenuButton = () => <div className='block md:hidden'>
-    <ul className='w-full flex items-center justify-end'>
-      <li className='p-4'>
-        <button className='p-2 block rounded-lg text-blue-400' onClick={() => setIsOpen(true)}>
-          <CiMenuBurger/>
-        </button>
-      </li>
-    </ul>
-  </div>;
-
   return <nav className='p-2 bg-slate-900 md:p-4'>
     <div id='nav' className='bg-white w-full  rounded-lg shadow'>
       <Links/>
-      <MenuButton/>
+      <MenuButton onMenuOpen={() => setIsOpen(true)}/>
     </div>
     <div id='fixed-nav' className={`transition-all ease duration-500 z-20 bg-white fixed left-0 w-full rounded-bl-lg rounded-br-lg shadow ${isTop ? '-top-[100%]' : 'top-0'}`}>
       <Links/>
-      <MenuButton/>
+      <MenuButton onMenuOpen={() => setIsOpen(true)}/>
     </div>
-    <div id='sidenav' className={`z-30 transition-all fixed top-0 w-full h-full ${isOpen ? 'left-0' : '-left-[100%]'}`}>
+    <div key={pathname} id='sidenav' className={`z-30 transition-all fixed top-0 w-full h-full ${isOpen ? 'left-0' : '-left-[100%]'}`}>
       <div className='absolute top-0 left-0 w-full h-full bg-white flex justify-center items-center'>
         <div className='absolute top-5 right-5 z-10'>
           <button onClick={() => setIsOpen(false)}>
